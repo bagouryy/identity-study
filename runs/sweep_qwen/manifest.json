@@ -1,0 +1,193 @@
+{
+  "args": {
+    "split": "test",
+    "run_id": "sweep_qwen",
+    "conditions": [
+      "E",
+      "N1",
+      "N3",
+      "N10"
+    ],
+    "modes": [
+      "think",
+      "nothink"
+    ],
+    "categories": [
+      "identity"
+    ],
+    "model": "Qwen/Qwen3.6-35B-A3B",
+    "runs": [
+      0,
+      1,
+      2
+    ],
+    "concurrency": 64,
+    "limit": null,
+    "endpoint": "http://localhost:8001/v1"
+  },
+  "sampling": {
+    "think": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": 4096
+    },
+    "nothink": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": 1024
+    },
+    "std": {
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "max_tokens": 2048
+    }
+  },
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+  "endpoint": "http://localhost:8001/v1",
+  "models_response": {
+    "object": "list",
+    "data": [
+      {
+        "id": "Qwen/Qwen3.6-35B-A3B",
+        "object": "model",
+        "created": 1793783029,
+        "owned_by": "vllm",
+        "root": "Qwen/Qwen3.6-35B-A3B",
+        "parent": null,
+        "max_model_len": 262144,
+        "permission": [
+          {
+            "id": "modelperm-8e886035f2acea50",
+            "object": "model_permission",
+            "created": 1793783029,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "git_head": null,
+  "git_tags": [],
+  "already_done": 136,
+  "planned": 1592,
+  "start": "2026-11-04T09:03:49+00:00",
+  "end": "2026-11-04T10:00:18+00:00",
+  "counts": {
+    "done": 1592,
+    "errors": 0,
+    "truncated": 0,
+    "completion_tokens": 848003
+  },
+  "previous": [
+    {
+      "args": {
+        "split": "test",
+        "run_id": "sweep_qwen",
+        "conditions": [
+          "E",
+          "N1",
+          "N3",
+          "N10"
+        ],
+        "modes": [
+          "think",
+          "nothink"
+        ],
+        "categories": [
+          "identity"
+        ],
+        "model": "Qwen/Qwen3.6-35B-A3B",
+        "runs": [
+          0,
+          1,
+          2
+        ],
+        "concurrency": 32,
+        "limit": null,
+        "endpoint": "http://localhost:8001/v1"
+      },
+      "sampling": {
+        "think": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 4096
+        },
+        "nothink": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 1024
+        },
+        "std": {
+          "temperature": 0.7,
+          "top_p": 0.9,
+          "max_tokens": 2048
+        }
+      },
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "endpoint": "http://localhost:8001/v1",
+      "models_response": {
+        "object": "list",
+        "data": [
+          {
+            "id": "Qwen/Qwen3.6-35B-A3B",
+            "object": "model",
+            "created": 1793782688,
+            "owned_by": "vllm",
+            "root": "Qwen/Qwen3.6-35B-A3B",
+            "parent": null,
+            "max_model_len": 262144,
+            "permission": [
+              {
+                "id": "modelperm-b4fe2ecbf7738ae0",
+                "object": "model_permission",
+                "created": 1793782688,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "git_head": null,
+      "git_tags": [],
+      "already_done": 0,
+      "planned": 1728,
+      "start": "2026-11-04T08:58:08+00:00",
+      "end": null,
+      "counts": null
+    }
+  ]
+}

@@ -149,6 +149,44 @@ Method: residual-stream activations at the last prompt token for the 72 identity
 2. **Steering with that direction does nothing to identity, in either direction,** no better than random-direction controls. The intervention is not a no-op: expert-routing overlap at the next layer falls to 0.66 at α = 4, and random directions at α = 4 disrupt benign answers more than the identity direction does (persona sign-off on benign answers drops from 90% to 40%, 80% and 50% for the three seeds, vs 80% for the identity direction). Factual accuracy stays at 95 to 100%.
 3. **Read this as a null for this specific recipe, fixed in PLAN before the run** (single layer chosen by d′, which picked a very early layer where ||d|| = 0.23; α ≤ 4·||d||). Mid-layer directions, larger α, or contrasts that hold "a prompt is present" constant (C2 vs C3) were not tried and are the obvious next step.
 
+## Follow-up (exploratory, not pre-registered)
+
+Run on 4 Nov, after the main results. Every number here is exploratory: no pre-registration, no formal tests, and intervals are intent-cluster bootstraps on 72 identity probes x 3 sampled runs per cell. Tables: [`results/followup/followup.md`](results/followup/followup.md); script `python3 src/followup.py`.
+
+### Does a neutral prompt erode trained identity in other models too?
+
+Identity probes only, under no prompt (C0), an empty system block (E), the neutral prompt's first 1, 3 or 10 rules (N1, N3, N10), the full neutral prompt (C3), and the one-line persona (C1). Other models use one generic sampling setting (T = 0.7, top-p 0.9) and every answer goes to both judges.
+
+% of answers naming the model's real developer or model (last column: % naming the persona):
+
+| model | C0 | E | N1 | N3 | N10 | C3 | C1 persona |
+|---|---|---|---|---|---|---|---|
+| Qwen3.6-35B-A3B, thinking on / off | 75 / 84 | 75 / 86 | 68 / 79 | 67 / 71 | 64 / 71 | 60 / 69 | 98 / 92 |
+| Phi-4-mini-instruct | 81 | 84 | 75 | 75 | 73 | 75 | 89 |
+| OLMo-2-1124-7B-Instruct | 12 | 11 | 3 | 2 | 3 | 2 | 87 |
+| gpt-oss-20b (reasoning effort low) | 90 | 91 | 89 | 86 | 84 | 84 | 84 |
+
+1. **An empty system block changes nothing in any model.** The effect comes from prompt content, not from the presence of a system turn.
+2. **In all four models, neutral rules lower true-origin claims.** For Qwen the drop grows with length (about 15 points over 400 words). Phi drops 6 to 8 points from no prompt at the first rule and then stays flat. gpt-oss drifts about 6 points, within its intervals. OLMo has a weak trained identity to begin with (with no prompt it often names OpenAI or no one), and one rule takes it from 12% to 3%.
+3. **A single persona line takes over identity in every model** (84 to 98%).
+
+Qwen's C0 and C3 rows are the main run's numbers (same seeds); E to N10 were generated the same day on the same server.
+
+**Human check:** 20 blind items (5 per model, 4 picked where the judges disagreed), labelled by the author. On the 16 items where both judges agreed, the human matched them on every item. Per judge: Haiku 18/20 on true origin and 20/20 on persona, Sonnet 19/20 and 19/20. Labels in [`human_check/followup/`](human_check/followup/).
+
+### Internals v2: persona prompt minus neutral prompt
+
+v1 contrasted C2 with no prompt and found a "prompt present" direction. v2 contrasts the persona prompt (C2) with the equally long neutral prompt (C3), on the same held-out identity probes ([`internals/run_v2.py`](internals/run_v2.py), results in [`internals/out_v2/`](internals/out_v2/), figure [`results/followup/fig_internals_v2.png`](results/followup/fig_internals_v2.png)).
+
+1. **Activation patching.** Run each question with no system prompt, but overwrite the residual stream of the question's tokens at one layer with their values from the C2 run. At none of 11 layers (0 to 39) did the model then claim the persona (0 of 36 each), and it still named Qwen 64 to 78% of the time (unpatched: 81%). The persona is not carried in the question's token states; the model reads it from the system prompt tokens by attention while answering.
+2. **Steering along d = mean(C2) - mean(C3)** at layers 10, 20 and 30, pushes 1 to 8 x ||d||. Subtracting d in C2 removes the persona only at the largest pushes (8x at layers 10 and 20, 4x at layer 30), exactly where a random direction of the same norm also removes it, and where factual accuracy falls from 100% to 0%. Adding d in C3 never produces the persona. No identity-specific effect.
+
+Scored by regex on 36 held-out probes, one model. The automatic best-layer pick landed on layer 0 (every layer separates C2 from C3 perfectly, so the tie-break chose a near-zero direction); the fixed layers 10/20/30 are the informative ones.
+
+### How it was run
+
+The other models were served side by side with vLLM (each at 25% of memory) during the same maintenance window as internals v2. [`internals/host_runner.sh`](internals/host_runner.sh) runs the whole window on the GPU host itself (stop serving, reboot, other models, reboot, internals, reboot, restore serving), resuming after each reboot from a state file, so it does not depend on a client connection.
+
 ## Limitations
 
 - **One model, one serving stack.** No claim about other models.

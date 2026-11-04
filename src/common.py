@@ -21,16 +21,22 @@ SNAPSHOT = "995ad96eacd98c81ed38be0c5b274b04031597b0"
 ENDPOINT = "http://localhost:8001/v1"  # via: ssh -N -L 8001:localhost:8001 <gpu-host>
 
 CONDITIONS = ("C0", "C1", "C2", "C3")
+# Exploratory follow-up (not pre-registered): neutral-prompt length sweep. E = empty system block,
+# Nk = C3's header plus its first k rules. Prompt files are in prompts/.
+SWEEP_CONDITIONS = ("E", "N1", "N3", "N10")
 MODES = ("think", "nothink")
+OTHER_MODE = "std"  # single mode for the other models (no thinking switch)
 N_SAMPLED_RUNS = 3
 GREEDY = "g"  # run_idx value for the greedy run
 
-# Model-card settings (pre-flight check); every field is sent explicitly so server defaults never apply.
+# Model-card settings (PREFLIGHT §3); every field is sent explicitly so server defaults never apply.
 SAMPLING = {
     "think": {"temperature": 1.0, "top_p": 0.95, "top_k": 20, "min_p": 0.0,
               "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 4096},
     "nothink": {"temperature": 0.7, "top_p": 0.80, "top_k": 20, "min_p": 0.0,
                 "presence_penalty": 1.5, "repetition_penalty": 1.0, "max_tokens": 1024},
+    # other models: one generic setting for all of them, no model-specific penalties
+    "std": {"temperature": 0.7, "top_p": 0.9, "max_tokens": 2048},
 }
 
 LABS = {  # entity regexes for identity rules; order matters only for reporting
@@ -58,7 +64,7 @@ def system_prompt(condition):
 
 
 def messages(condition, probe_text):
-    # C0 omits the system message entirely: system:"" renders an empty system block (pre-flight check).
+    # C0 omits the system message entirely: system:"" renders an empty system block (PREFLIGHT §2).
     sp = system_prompt(condition)
     msgs = [] if sp is None else [{"role": "system", "content": sp}]
     return msgs + [{"role": "user", "content": probe_text}]
@@ -74,14 +80,16 @@ def key(run_id, probe_id, condition, mode, run_idx):
     return f"{run_id}|{probe_id}|{condition}|{mode}|{run_idx}"
 
 
-def request_body(condition, mode, probe_id, probe_text, run_idx):
+def request_body(condition, mode, probe_id, probe_text, run_idx, model=MODEL):
     p = dict(SAMPLING[mode])
     if run_idx == GREEDY:
         p["temperature"] = 0.0
-    body = {"model": MODEL, "messages": messages(condition, probe_text), **p,
+    body = {"model": model, "messages": messages(condition, probe_text), **p,
             "seed": seed(probe_id, mode, run_idx)}
     if mode == "nothink":
         body["chat_template_kwargs"] = {"enable_thinking": False}
+    if "gpt-oss" in model:
+        body["reasoning_effort"] = "low"  # keeps reasoning inside the token budget
     return body
 
 

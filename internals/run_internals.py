@@ -47,7 +47,8 @@ THINK = re.compile(r"<think>.*?</think>\s*", re.S)
 
 # Hook state. Hooks are installed once and read this dict on every forward.
 STATE = {"backend": None, "capture": False, "cap": {}, "steer": None, "sys_len": 0, "start": None,
-         "gate_layer": None, "gates": []}
+         "gate_layer": None, "gates": [],
+         "capfull": None, "full": {}, "patch": None}  # v2 (run_v2.py): full-sequence capture at one layer, positional patch
 
 
 def log(*a):
@@ -166,6 +167,19 @@ def make_layer_hook(i):
         if STATE["capture"]:
             r = residual(out, be)
             STATE["cap"].setdefault(i, []).append((r.shape[-2], r.reshape(-1, r.shape[-1])[-1].float().cpu()))
+        if STATE["capfull"] == i:
+            r = residual(out, be)
+            STATE["full"].setdefault(i, []).append(r.reshape(-1, r.shape[-1]).float().cpu())
+        pt = STATE["patch"]
+        if pt is not None and pt["layer"] == i:
+            r = residual(out, be)
+            if r.reshape(-1, r.shape[-1]).shape[0] == pt["T"]:  # single-prompt prefill only, decode steps untouched
+                flat = r.reshape(-1, r.shape[-1])
+                delta = torch.zeros_like(flat)
+                K = pt["target"].shape[0]
+                delta[-K:] = pt["target"].to(flat.device, flat.dtype) - flat[-K:]  # set the last K rows to the target
+                pt["fired"] += 1
+                return add_to_output(out, delta.reshape(r.shape), be)
         s = STATE["steer"]
         if s is None or s["layer"] != i:
             return None

@@ -1,0 +1,297 @@
+{
+  "args": {
+    "split": "test",
+    "run_id": "x_olmo",
+    "conditions": [
+      "C0",
+      "C1",
+      "C3",
+      "E",
+      "N1",
+      "N3",
+      "N10"
+    ],
+    "modes": [
+      "std"
+    ],
+    "categories": [
+      "identity"
+    ],
+    "model": "allenai/OLMo-2-1124-7B-Instruct",
+    "runs": [
+      0,
+      1,
+      2
+    ],
+    "concurrency": 32,
+    "limit": null,
+    "endpoint": "http://localhost:8101/v1"
+  },
+  "sampling": {
+    "think": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": 4096
+    },
+    "nothink": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": 1024
+    },
+    "std": {
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "max_tokens": 2048
+    }
+  },
+  "model": "allenai/OLMo-2-1124-7B-Instruct",
+  "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+  "endpoint": "http://localhost:8101/v1",
+  "models_response": {
+    "object": "list",
+    "data": [
+      {
+        "id": "allenai/OLMo-2-1124-7B-Instruct",
+        "object": "model",
+        "created": 1793797736,
+        "owned_by": "vllm",
+        "root": "allenai/OLMo-2-1124-7B-Instruct",
+        "parent": null,
+        "max_model_len": 4096,
+        "permission": [
+          {
+            "id": "modelperm-a480e38bfb8b0ed6",
+            "object": "model_permission",
+            "created": 1793797736,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "git_head": null,
+  "git_tags": [],
+  "already_done": 1512,
+  "planned": 0,
+  "start": "2026-11-04T13:08:56+00:00",
+  "end": "2026-11-04T13:08:56+00:00",
+  "counts": {
+    "done": 0,
+    "errors": 0,
+    "truncated": 0,
+    "completion_tokens": 0
+  },
+  "previous": [
+    {
+      "args": {
+        "split": "test",
+        "run_id": "x_olmo",
+        "conditions": [
+          "C0",
+          "C1",
+          "C3",
+          "E",
+          "N1",
+          "N3",
+          "N10"
+        ],
+        "modes": [
+          "std"
+        ],
+        "categories": [
+          "identity"
+        ],
+        "model": "allenai/OLMo-2-1124-7B-Instruct",
+        "runs": [
+          0,
+          1,
+          2
+        ],
+        "concurrency": 32,
+        "limit": null,
+        "endpoint": "http://localhost:8101/v1"
+      },
+      "sampling": {
+        "think": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 4096
+        },
+        "nothink": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 1024
+        },
+        "std": {
+          "temperature": 0.7,
+          "top_p": 0.9,
+          "max_tokens": 2048
+        }
+      },
+      "model": "allenai/OLMo-2-1124-7B-Instruct",
+      "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "endpoint": "http://localhost:8101/v1",
+      "models_response": {
+        "object": "list",
+        "data": [
+          {
+            "id": "allenai/OLMo-2-1124-7B-Instruct",
+            "object": "model",
+            "created": 1793794249,
+            "owned_by": "vllm",
+            "root": "allenai/OLMo-2-1124-7B-Instruct",
+            "parent": null,
+            "max_model_len": 4096,
+            "permission": [
+              {
+                "id": "modelperm-94434a51dbd99da1",
+                "object": "model_permission",
+                "created": 1793794249,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "git_head": null,
+      "git_tags": [],
+      "already_done": 0,
+      "planned": 1512,
+      "start": "2026-11-04T12:10:49+00:00",
+      "end": null,
+      "counts": null
+    },
+    {
+      "args": {
+        "split": "test",
+        "run_id": "x_olmo",
+        "conditions": [
+          "C0",
+          "C1",
+          "C3",
+          "E",
+          "N1",
+          "N3",
+          "N10"
+        ],
+        "modes": [
+          "std"
+        ],
+        "categories": [
+          "identity"
+        ],
+        "model": "allenai/OLMo-2-1124-7B-Instruct",
+        "runs": [
+          0,
+          1,
+          2
+        ],
+        "concurrency": 32,
+        "limit": null,
+        "endpoint": "http://localhost:8101/v1"
+      },
+      "sampling": {
+        "think": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 4096
+        },
+        "nothink": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 1024
+        },
+        "std": {
+          "temperature": 0.7,
+          "top_p": 0.9,
+          "max_tokens": 2048
+        }
+      },
+      "model": "allenai/OLMo-2-1124-7B-Instruct",
+      "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "endpoint": "http://localhost:8101/v1",
+      "models_response": {
+        "object": "list",
+        "data": [
+          {
+            "id": "allenai/OLMo-2-1124-7B-Instruct",
+            "object": "model",
+            "created": 1793796761,
+            "owned_by": "vllm",
+            "root": "allenai/OLMo-2-1124-7B-Instruct",
+            "parent": null,
+            "max_model_len": 4096,
+            "permission": [
+              {
+                "id": "modelperm-9d234c9af33ccd41",
+                "object": "model_permission",
+                "created": 1793796761,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "git_head": null,
+      "git_tags": [],
+      "already_done": 0,
+      "planned": 1512,
+      "start": "2026-11-04T12:52:41+00:00",
+      "end": "2026-11-04T13:08:56+00:00",
+      "counts": {
+        "done": 1512,
+        "errors": 0,
+        "truncated": 0,
+        "completion_tokens": 186283
+      }
+    }
+  ]
+}

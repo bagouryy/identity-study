@@ -1,0 +1,52 @@
+{
+ "calls": [
+  {
+   "batch_id": "4adcfe2384",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5898,
+   "cache_creation_input_tokens": 11334,
+   "cache_read_input_tokens": 110380,
+   "cost_usd": 0.031599
+  },
+  {
+   "batch_id": "7f5032b3f9",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5788,
+   "cache_creation_input_tokens": 10925,
+   "cache_read_input_tokens": 110380,
+   "cost_usd": 0.030915
+  },
+  {
+   "batch_id": "ae25fe3e19",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 6343,
+   "cache_creation_input_tokens": 12237,
+   "cache_read_input_tokens": 110380,
+   "cost_usd": 0.0336145
+  },
+  {
+   "batch_id": "75474fbd8d",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 6324,
+   "cache_creation_input_tokens": 11749,
+   "cache_read_input_tokens": 110380,
+   "cost_usd": 0.033079
+  }
+ ],
+ "failures": [],
+ "totals": {
+  "input_tokens": 8,
+  "output_tokens": 24353,
+  "cache_creation_input_tokens": 46245,
+  "cache_read_input_tokens": 441520,
+  "n_calls": 4
+ }
+}

@@ -1,0 +1,297 @@
+{
+  "args": {
+    "split": "test",
+    "run_id": "x_gptoss",
+    "conditions": [
+      "C0",
+      "C1",
+      "C3",
+      "E",
+      "N1",
+      "N3",
+      "N10"
+    ],
+    "modes": [
+      "std"
+    ],
+    "categories": [
+      "identity"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "runs": [
+      0,
+      1,
+      2
+    ],
+    "concurrency": 32,
+    "limit": null,
+    "endpoint": "http://localhost:8103/v1"
+  },
+  "sampling": {
+    "think": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": 4096
+    },
+    "nothink": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": 1024
+    },
+    "std": {
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "max_tokens": 2048
+    }
+  },
+  "model": "openai/gpt-oss-20b",
+  "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+  "endpoint": "http://localhost:8103/v1",
+  "models_response": {
+    "object": "list",
+    "data": [
+      {
+        "id": "openai/gpt-oss-20b",
+        "object": "model",
+        "created": 1793797632,
+        "owned_by": "vllm",
+        "root": "openai/gpt-oss-20b",
+        "parent": null,
+        "max_model_len": 8192,
+        "permission": [
+          {
+            "id": "modelperm-99b0451eabf1eb84",
+            "object": "model_permission",
+            "created": 1793797632,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "git_head": null,
+  "git_tags": [],
+  "already_done": 1512,
+  "planned": 0,
+  "start": "2026-11-04T13:07:12+00:00",
+  "end": "2026-11-04T13:07:12+00:00",
+  "counts": {
+    "done": 0,
+    "errors": 0,
+    "truncated": 0,
+    "completion_tokens": 0
+  },
+  "previous": [
+    {
+      "args": {
+        "split": "test",
+        "run_id": "x_gptoss",
+        "conditions": [
+          "C0",
+          "C1",
+          "C3",
+          "E",
+          "N1",
+          "N3",
+          "N10"
+        ],
+        "modes": [
+          "std"
+        ],
+        "categories": [
+          "identity"
+        ],
+        "model": "openai/gpt-oss-20b",
+        "runs": [
+          0,
+          1,
+          2
+        ],
+        "concurrency": 32,
+        "limit": null,
+        "endpoint": "http://localhost:8103/v1"
+      },
+      "sampling": {
+        "think": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 4096
+        },
+        "nothink": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 1024
+        },
+        "std": {
+          "temperature": 0.7,
+          "top_p": 0.9,
+          "max_tokens": 2048
+        }
+      },
+      "model": "openai/gpt-oss-20b",
+      "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "endpoint": "http://localhost:8103/v1",
+      "models_response": {
+        "object": "list",
+        "data": [
+          {
+            "id": "openai/gpt-oss-20b",
+            "object": "model",
+            "created": 1793794249,
+            "owned_by": "vllm",
+            "root": "openai/gpt-oss-20b",
+            "parent": null,
+            "max_model_len": 8192,
+            "permission": [
+              {
+                "id": "modelperm-9492386a9d9946bf",
+                "object": "model_permission",
+                "created": 1793794249,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "git_head": null,
+      "git_tags": [],
+      "already_done": 0,
+      "planned": 1512,
+      "start": "2026-11-04T12:10:49+00:00",
+      "end": null,
+      "counts": null
+    },
+    {
+      "args": {
+        "split": "test",
+        "run_id": "x_gptoss",
+        "conditions": [
+          "C0",
+          "C1",
+          "C3",
+          "E",
+          "N1",
+          "N3",
+          "N10"
+        ],
+        "modes": [
+          "std"
+        ],
+        "categories": [
+          "identity"
+        ],
+        "model": "openai/gpt-oss-20b",
+        "runs": [
+          0,
+          1,
+          2
+        ],
+        "concurrency": 32,
+        "limit": null,
+        "endpoint": "http://localhost:8103/v1"
+      },
+      "sampling": {
+        "think": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 4096
+        },
+        "nothink": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 1024
+        },
+        "std": {
+          "temperature": 0.7,
+          "top_p": 0.9,
+          "max_tokens": 2048
+        }
+      },
+      "model": "openai/gpt-oss-20b",
+      "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "endpoint": "http://localhost:8103/v1",
+      "models_response": {
+        "object": "list",
+        "data": [
+          {
+            "id": "openai/gpt-oss-20b",
+            "object": "model",
+            "created": 1793796761,
+            "owned_by": "vllm",
+            "root": "openai/gpt-oss-20b",
+            "parent": null,
+            "max_model_len": 8192,
+            "permission": [
+              {
+                "id": "modelperm-81199320a5b3d672",
+                "object": "model_permission",
+                "created": 1793796761,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "git_head": null,
+      "git_tags": [],
+      "already_done": 0,
+      "planned": 1512,
+      "start": "2026-11-04T12:52:41+00:00",
+      "end": "2026-11-04T13:07:11+00:00",
+      "counts": {
+        "done": 1512,
+        "errors": 0,
+        "truncated": 0,
+        "completion_tokens": 252490
+      }
+    }
+  ]
+}

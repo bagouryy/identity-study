@@ -1,0 +1,36 @@
+50/1728 agg 79 tok/s, median stream 5.3 tok/s, errors 0, truncated 0, ETA 62.9 min
+100/1728 agg 120 tok/s, median stream 5.5 tok/s, errors 0, truncated 0, ETA 63.7 min
+50/1592 agg 79 tok/s, median stream 4.4 tok/s, errors 0, truncated 0, ETA 69.7 min
+100/1592 agg 128 tok/s, median stream 4.3 tok/s, errors 0, truncated 0, ETA 67.4 min
+150/1592 agg 164 tok/s, median stream 4.2 tok/s, errors 0, truncated 0, ETA 60.9 min
+200/1592 agg 179 tok/s, median stream 4.1 tok/s, errors 0, truncated 0, ETA 54.2 min
+250/1592 agg 199 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 49.0 min
+300/1592 agg 211 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 46.3 min
+350/1592 agg 208 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 45.5 min
+400/1592 agg 215 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 44.2 min
+450/1592 agg 220 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 41.6 min
+500/1592 agg 221 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 39.1 min
+550/1592 agg 232 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 36.4 min
+600/1592 agg 230 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 33.7 min
+650/1592 agg 229 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 32.4 min
+700/1592 agg 229 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 31.1 min
+750/1592 agg 229 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 29.4 min
+800/1592 agg 229 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 27.7 min
+850/1592 agg 235 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 25.9 min
+900/1592 agg 241 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 24.0 min
+950/1592 agg 240 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 22.2 min
+1000/1592 agg 239 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 20.6 min
+1050/1592 agg 237 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 18.9 min
+1100/1592 agg 240 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 17.0 min
+1150/1592 agg 242 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 15.3 min
+1200/1592 agg 245 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 13.6 min
+1250/1592 agg 242 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 12.0 min
+1300/1592 agg 243 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 10.3 min
+1350/1592 agg 243 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 8.5 min
+1400/1592 agg 247 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 6.7 min
+1450/1592 agg 247 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 5.0 min
+1500/1592 agg 248 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 3.2 min
+1550/1592 agg 248 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 1.4 min
+1592/1592 agg 250 tok/s, median stream 4.0 tok/s, errors 0, truncated 0, ETA 0.0 min
+pass 1728 errors 0
+DONE

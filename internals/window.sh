@@ -14,6 +14,13 @@ VLLM_CONTAINER=${GPU_VLLM_CONTAINER:?set GPU_VLLM_CONTAINER}
 MODEL=Qwen/Qwen3.6-35B-A3B
 IMAGE=vllm/vllm-openai:cu130-nightly
 CNAME=identity-internals
+STAGES=${STAGES:-internals}  # "models internals" for the follow-up window
+INTERNALS=${INTERNALS:-run_internals.py}  # run_v2.py for the follow-up
+INT_OUT=${INT_OUT:-out}
+# follow-up: other models, all served at once (name, HF id, port); ~110 GB free with Qwen down, 0.25 each
+MODELS=("olmo allenai/OLMo-2-1124-7B-Instruct 8101 4096" "phi microsoft/Phi-4-mini-instruct 8102" "gptoss openai/gpt-oss-20b 8103")
+MODELS_ONLY=${MODELS_ONLY:-}  # e.g. "olmo gptoss" to rerun a subset
+GEN_ARGS="--split test --modes std --conditions C0 C1 C3 E N1 N3 N10 --runs 0 1 2 --categories identity --concurrency 32"
 DRY=0; [[ "${1:-}" == --dry-run ]] && DRY=1
 LOCAL_OUT=${LOCAL_OUT:-internals/out}  # tests point this elsewhere
 mkdir -p "$LOCAL_OUT"
@@ -23,8 +30,9 @@ POLL=${POLL:-10}  # seconds between polls (tests set 0)
 
 log() { echo "[$(date '+%F %T')] $*" | tee -a "$LOG"; }
 run() { log "+ $*"; (( DRY )) || "$@" 2>&1 | tee -a "$LOG"; }
-r() { run ssh -o ConnectTimeout=10 -o BatchMode=yes "$HOST" "$@"; }
-q() { ssh -o ConnectTimeout=10 -o BatchMode=yes "$HOST" "$@"; }  # quiet remote query, never in dry-run
+SSHO="-o ConnectTimeout=10 -o BatchMode=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=6"  # a dropped link must not hang a step
+r() { run ssh $SSHO "$HOST" "$@"; }
+q() { ssh $SSHO "$HOST" "$@"; }  # quiet remote query, never in dry-run
 
 boot_id() { q cat /proc/sys/kernel/random/boot_id 2>/dev/null || echo none; }
 
@@ -45,7 +53,7 @@ internals() {  # internals <timeout> <args...>
   local t=$1; shift
   r "timeout $t docker run --rm --name $CNAME --gpus all --ipc=host -e HF_HUB_OFFLINE=1 \
 -v ~/.cache/huggingface:/root/.cache/huggingface -v $RD:/work --entrypoint python3 $IMAGE \
-/work/internals/run_internals.py --out /work/internals/out $*"
+/work/internals/$INTERNALS --out /work/internals/$INT_OUT $*"
 }
 
 health() {
@@ -67,6 +75,39 @@ health() {
   log "health OK"
 }
 
+models() {  # serve the other models side by side, generate the identity sweep against each, remove them
+  local ready=() m n id port
+  for m in "${MODELS[@]}"; do
+    read -r n id port mlen <<< "$m"
+    [[ -z "$MODELS_ONLY" || " $MODELS_ONLY " == *" $n "* ]] || continue
+    r "docker run -d --name identity-$n --gpus all --ipc=host -p 127.0.0.1:$port:8000 -v $RD/hf:/hf \
+-v ~/.cache/huggingface/hub/models--openai--gpt-oss-20b:/hf/hub/models--openai--gpt-oss-20b:ro \
+-v $RD/tiktoken:/tiktoken:ro -e TIKTOKEN_ENCODINGS_BASE=/tiktoken -e HF_HOME=/hf -e HF_HUB_OFFLINE=1 $IMAGE $id --gpu-memory-utilization 0.25 --max-model-len ${mlen:-8192}" || { log "start $n failed, skipping"; continue; }
+    (( DRY )) && { ready+=("$m"); continue; }
+    local ok=0  # one at a time: vLLM sizes its pool from free memory at start
+    for _ in $(seq 90); do [[ "$(q "curl -sf -m 5 localhost:$port/v1/models" 2>/dev/null || true)" == *"$id"* ]] && { ok=1; break; }; sleep "$POLL"; done
+    if (( ok )); then ready+=("$m"); log "$n ready on :$port"
+    else log "$n not ready after 15 min, skipping"; q "docker logs --tail 40 identity-$n" >> "$LOG" 2>&1 || true; q "docker rm -f identity-$n" >/dev/null 2>&1 || true; fi
+  done
+  (( ${#ready[@]} )) || { log "no other model came up"; return 0; }
+  local cmd="cd $RD;"
+  for m in "${ready[@]}"; do
+    read -r n id port _ <<< "$m"
+    cmd+=" (for i in 1 2; do python3 src/generate.py --run-id x_$n --model $id --endpoint http://localhost:$port/v1 $GEN_ARGS >> runs/x_$n.log 2>&1; done; echo DONE >> runs/x_$n.log) &"
+  done
+  # detached on the host so an ssh drop cannot kill generation; poll for every DONE marker (3 h cap)
+  r "setsid nohup bash -c '$cmd wait' >/dev/null 2>&1 < /dev/null &"
+  if (( !DRY )); then
+    local logs=""; for m in "${ready[@]}"; do read -r n _ <<< "$m"; logs+=" $RD/runs/x_$n.log"; done
+    for _ in $(seq $((3 * 360))); do
+      local nd; nd=$(q "cat $logs 2>/dev/null | grep -c DONE" 2>/dev/null); [[ "$nd" =~ ^[0-9]+$ ]] && (( nd >= ${#ready[@]} )) && break
+      sleep "$POLL"
+    done
+    log "model generation finished or timed out: $(q "tail -qn1 $logs" 2>/dev/null | tr '\n' ' ')"
+  fi
+  r "docker rm -f $(for m in "${MODELS[@]}"; do read -r n _ <<< "$m"; printf 'identity-%s ' "$n"; done)" || true
+}
+
 restore() {
   (( RAN )) && reboot_host  # internals may leave memory pinned; reboot first so vLLM gets the full pool
   r "docker start $VLLM_CONTAINER"  # reuses the container's own config; compose would need the unreadable .env
@@ -79,7 +120,7 @@ on_exit() {
   trap - EXIT
   if (( STOPPED && !RESTORED )); then
     log "!! exit $rc after vLLM was stopped: restoring serving"
-    (( DRY )) || q "docker rm -f $CNAME" >/dev/null 2>&1 || true
+    (( DRY )) || q "docker rm -f $CNAME identity-olmo identity-phi identity-gptoss" >/dev/null 2>&1 || true
     restore || log "!! RESTORE FAILED. By hand: ssh $HOST \"docker start $VLLM_CONTAINER\" (reboot first if memory looks full)"
   fi
   (( rc == 0 && !DRY )) && log "SUCCESS: window finished, results in $LOCAL_OUT/" || true
@@ -103,7 +144,7 @@ fi
 log "== 1. sync code to the host"
 r "mkdir -p $RD/src $RD/probes $RD/internals/out"
 run rsync -az --exclude .venv --exclude out --exclude __pycache__ internals/ "$HOST:$RD/internals/"
-run rsync -az src/common.py "$HOST:$RD/src/"
+run rsync -az --exclude __pycache__ src/ "$HOST:$RD/src/"
 run rsync -az prompts/ "$HOST:$RD/prompts/"
 run rsync -az probes/test.yaml "$HOST:$RD/probes/"
 
@@ -127,6 +168,16 @@ gate() {
 log "== 4. memory gate"
 gate
 
+if [[ $STAGES == *models* ]]; then
+  log "== 4m. other models, served together"
+  RAN=1  # their containers may also leave memory pinned
+  models
+  log "== 4m. reboot and re-gate before internals"
+  reboot_host
+  gate
+fi
+[[ $STAGES == *internals* ]] || { log "== no internals stage requested"; restore; exit 0; }
+
 log "== 5. hook smoke test (vllm, 20 min), fallback hf"
 RAN=1
 BACKEND=vllm
@@ -144,7 +195,7 @@ log "== 6. full run, backend $BACKEND (3 h timeout)"
 internals 3h --backend "$BACKEND" --stage all
 
 log "== 7. fetch results"
-run rsync -az "$HOST:$RD/internals/out/" "$LOCAL_OUT/"
+run rsync -az "$HOST:$RD/internals/$INT_OUT/" "$LOCAL_OUT/"
 if [[ -x internals/.venv/bin/python ]]; then
   run internals/.venv/bin/python internals/run_internals.py --stage score --out "$LOCAL_OUT" || log "local score failed (serving restore continues)"
 fi

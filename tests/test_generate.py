@@ -90,7 +90,7 @@ class TestGenerate(unittest.TestCase):
         self.assertEqual(r["seed"], common.seed(r["probe_id"], "think", "g"))
         self.assertEqual(r["key"], common.key("r1", r["probe_id"], r["condition"], "think", "g"))
         self.assertEqual(set(r), {"key", "run_id", "probe_id", "intent_id", "category", "subtype", "author", "probe_text",
-                                  "condition", "mode", "run_idx", "seed", "content", "reasoning",
+                                  "model", "condition", "mode", "run_idx", "seed", "content", "reasoning",
                                   "finish_reason", "usage", "latency_s", "ts", "error"})
         self.assertEqual(m["counts"], {"done": 16, "errors": 8, "truncated": 8, "completion_tokens": 320})
         man = json.loads((common.RUNS / "r1" / "manifest.json").read_text())

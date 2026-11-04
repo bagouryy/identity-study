@@ -74,9 +74,9 @@ def build_jobs(probes, conditions, modes, runs):
     return jobs
 
 
-def run_one(job, run_id, url):
+def run_one(job, run_id, url, model=common.MODEL):
     p, c, m, r = job
-    body = common.request_body(c, m, p["probe_id"], p["text"], r)
+    body = common.request_body(c, m, p["probe_id"], p["text"], r, model)
     t0 = time.time()
     resp, err = post_with_retries(url, body)
     latency = time.time() - t0
@@ -91,7 +91,7 @@ def run_one(job, run_id, url):
         "key": common.key(run_id, p["probe_id"], c, m, r), "run_id": run_id,
         "probe_id": p["probe_id"], "intent_id": p.get("intent_id"), "category": p.get("category"),
         "subtype": p.get("subtype"), "author": p.get("author"), "probe_text": p["text"],
-        "condition": c, "mode": m, "run_idx": r, "seed": body["seed"],
+        "model": model, "condition": c, "mode": m, "run_idx": r, "seed": body["seed"],
         "content": msg.get("content"),
         "reasoning": msg.get("reasoning_content") or msg.get("reasoning"),
         "finish_reason": choice.get("finish_reason"), "usage": (resp or {}).get("usage"),
@@ -111,8 +111,11 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--split", required=True, choices=["dev", "test"])
     ap.add_argument("--run-id", required=True)
-    ap.add_argument("--conditions", nargs="+", default=list(common.CONDITIONS), choices=common.CONDITIONS)
-    ap.add_argument("--modes", nargs="+", default=list(common.MODES), choices=common.MODES)
+    ap.add_argument("--conditions", nargs="+", default=list(common.CONDITIONS),
+                    choices=common.CONDITIONS + common.SWEEP_CONDITIONS)
+    ap.add_argument("--modes", nargs="+", default=list(common.MODES), choices=common.MODES + (common.OTHER_MODE,))
+    ap.add_argument("--categories", nargs="+", help="only probes in these categories")
+    ap.add_argument("--model", default=common.MODEL)
     ap.add_argument("--runs", nargs="+", type=run_idx_arg,
                     default=[*range(common.N_SAMPLED_RUNS), common.GREEDY])
     ap.add_argument("--concurrency", type=int, default=32)
@@ -125,7 +128,8 @@ def main(argv=None):
     out_dir.mkdir(parents=True, exist_ok=True)
     raw = out_dir / "raw.jsonl"
     done_keys = {r["key"] for r in common.read_jsonl(raw) if not r.get("error")}
-    jobs = [j for j in build_jobs(common.load_probes(a.split), a.conditions, a.modes, a.runs)
+    probes = [p for p in common.load_probes(a.split) if not a.categories or p["category"] in a.categories]
+    jobs = [j for j in build_jobs(probes, a.conditions, a.modes, a.runs)
             if common.key(a.run_id, j[0]["probe_id"], j[1], j[2], j[3]) not in done_keys]
     if a.limit is not None:
         jobs = jobs[:a.limit]
@@ -134,7 +138,7 @@ def main(argv=None):
         models = http_json(endpoint + "/models", timeout=30)
     except Exception as e:  # manifest records the failure; generation errors surface per line
         models = {"error": f"{type(e).__name__}: {e}"}
-    manifest = {"args": vars(a), "sampling": common.SAMPLING, "model": common.MODEL,
+    manifest = {"args": vars(a), "sampling": common.SAMPLING, "model": a.model,
                 "snapshot": common.SNAPSHOT, "endpoint": endpoint, "models_response": models,
                 "git_head": git("rev-parse", "HEAD"),
                 "git_tags": (git("tag", "--points-at", "HEAD") or "").split() or [],
@@ -150,7 +154,7 @@ def main(argv=None):
     t_start, n, errors, trunc, toks, stream_rates = time.time(), 0, 0, 0, 0, []
     url = endpoint + "/chat/completions"
     with ThreadPoolExecutor(max_workers=a.concurrency) as ex:
-        for fut in as_completed([ex.submit(run_one, j, a.run_id, url) for j in jobs]):
+        for fut in as_completed([ex.submit(run_one, j, a.run_id, url, a.model) for j in jobs]):
             row = fut.result()
             ct = (row["usage"] or {}).get("completion_tokens") or 0
             with lock:
