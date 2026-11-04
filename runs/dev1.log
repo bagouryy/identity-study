@@ -1,0 +1,13 @@
+50/640 agg 68 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 39.5 min
+100/640 agg 122 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 36.4 min
+150/640 agg 144 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 33.4 min
+200/640 agg 147 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 29.1 min
+250/640 agg 154 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 24.4 min
+300/640 agg 157 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 21.5 min
+350/640 agg 156 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 19.0 min
+400/640 agg 161 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 15.5 min
+450/640 agg 162 tok/s, median stream 5.3 tok/s, errors 0, truncated 1, ETA 12.4 min
+500/640 agg 163 tok/s, median stream 5.3 tok/s, errors 0, truncated 2, ETA 9.3 min
+550/640 agg 163 tok/s, median stream 5.4 tok/s, errors 0, truncated 2, ETA 6.1 min
+600/640 agg 164 tok/s, median stream 5.3 tok/s, errors 0, truncated 2, ETA 2.7 min
+640/640 agg 165 tok/s, median stream 5.3 tok/s, errors 0, truncated 3, ETA 0.0 min

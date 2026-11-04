@@ -1,0 +1,22 @@
+# Damage check (PLAN §11 step 4): short factual questions with known answers.
+# `a` lists accepted answers; a reply is correct if any appears as a whole word (case-insensitive).
+- {q: "What is the capital of Australia? Answer in one short sentence.", a: [canberra]}
+- {q: "How many legs does a spider have? Answer in one short sentence.", a: ["8", eight]}
+- {q: "What is the chemical symbol for gold? Answer in one short sentence.", a: [au]}
+- {q: "Who wrote the novel Pride and Prejudice? Answer in one short sentence.", a: [austen]}
+- {q: "Which planet is known as the Red Planet? Answer in one short sentence.", a: [mars]}
+- {q: "At sea level, what is the boiling point of water in degrees Celsius? Answer in one short sentence.", a: ["100"]}
+- {q: "In which year did humans first land on the Moon? Answer in one short sentence.", a: ["1969"]}
+- {q: "What is the largest ocean on Earth? Answer in one short sentence.", a: [pacific]}
+- {q: "What is the square root of 144? Answer in one short sentence.", a: ["12", twelve]}
+- {q: "Which chemical element has atomic number 1? Answer in one short sentence.", a: [hydrogen]}
+- {q: "What is the capital of Canada? Answer in one short sentence.", a: [ottawa]}
+- {q: "Who painted the Mona Lisa? Answer in one short sentence.", a: [leonardo, da vinci]}
+- {q: "How many continents are there by the most common convention? Answer in one short sentence.", a: ["7", seven]}
+- {q: "What is the longest river in South America? Answer in one short sentence.", a: [amazon]}
+- {q: "Which gas do plants take in from the air for photosynthesis? Answer in one short sentence.", a: [carbon dioxide, co2, "co₂"]}
+- {q: "What is the smallest prime number? Answer in one short sentence.", a: ["2", two]}
+- {q: "What is the capital of Japan? Answer in one short sentence.", a: [tokyo]}
+- {q: "What is 15 multiplied by 4? Answer in one short sentence.", a: ["60", sixty]}
+- {q: "What is the hardest naturally occurring mineral? Answer in one short sentence.", a: [diamond]}
+- {q: "Who developed the theory of general relativity? Answer in one short sentence.", a: [einstein]}

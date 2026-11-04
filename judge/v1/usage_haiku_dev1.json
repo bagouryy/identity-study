@@ -1,0 +1,412 @@
+{
+ "calls": [
+  {
+   "batch_id": "cb14a5ecd2",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4459,
+   "cache_creation_input_tokens": 121658,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.1328065
+  },
+  {
+   "batch_id": "473b12882d",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5415,
+   "cache_creation_input_tokens": 121265,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.1348035
+  },
+  {
+   "batch_id": "3c8f8bd25e",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 3817,
+   "cache_creation_input_tokens": 121531,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.1310745
+  },
+  {
+   "batch_id": "77c7a0b7df",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4733,
+   "cache_creation_input_tokens": 125152,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.1369855
+  },
+  {
+   "batch_id": "8f8eacf096",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 6653,
+   "cache_creation_input_tokens": 121724,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.1383575
+  },
+  {
+   "batch_id": "b4a39f147f",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5491,
+   "cache_creation_input_tokens": 11630,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0050717
+  },
+  {
+   "batch_id": "211018f334",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5303,
+   "cache_creation_input_tokens": 125996,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.1392545
+  },
+  {
+   "batch_id": "2bcc61d437",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5973,
+   "cache_creation_input_tokens": 13280,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0056427000000000005
+  },
+  {
+   "batch_id": "1d6bf5a511",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 7410,
+   "cache_creation_input_tokens": 14059,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.006517
+  },
+  {
+   "batch_id": "82b15063d5",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4612,
+   "cache_creation_input_tokens": 14034,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0051129999999999995
+  },
+  {
+   "batch_id": "70fb828882",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4987,
+   "cache_creation_input_tokens": 12658,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0050253
+  },
+  {
+   "batch_id": "59cd5c517a",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 6296,
+   "cache_creation_input_tokens": 11033,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0053548
+  },
+  {
+   "batch_id": "08b9439e8c",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5770,
+   "cache_creation_input_tokens": 14648,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0058148
+  },
+  {
+   "batch_id": "c05d7c3fb2",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4685,
+   "cache_creation_input_tokens": 16039,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0055505
+  },
+  {
+   "batch_id": "cc70f3f2c7",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4770,
+   "cache_creation_input_tokens": 15019,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.005389
+  },
+  {
+   "batch_id": "a9b0fd8c9e",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5845,
+   "cache_creation_input_tokens": 12552,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.005433100000000001
+  },
+  {
+   "batch_id": "13d41a04e4",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4999,
+   "cache_creation_input_tokens": 13729,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0052455
+  },
+  {
+   "batch_id": "819c92895f",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5479,
+   "cache_creation_input_tokens": 12479,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.005235500000000001
+  },
+  {
+   "batch_id": "22d214ccbd",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4268,
+   "cache_creation_input_tokens": 11473,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0044288
+  },
+  {
+   "batch_id": "d4f052cfc6",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5997,
+   "cache_creation_input_tokens": 17721,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.006542900000000001
+  },
+  {
+   "batch_id": "579c4ec43b",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5729,
+   "cache_creation_input_tokens": 14188,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0057023
+  },
+  {
+   "batch_id": "406057d060",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5805,
+   "cache_creation_input_tokens": 12463,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0053953000000000004
+  },
+  {
+   "batch_id": "846969a033",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 6848,
+   "cache_creation_input_tokens": 15118,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0064478
+  },
+  {
+   "batch_id": "ac6ce80b39",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5444,
+   "cache_creation_input_tokens": 13367,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0053956
+  },
+  {
+   "batch_id": "23b8ed605d",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5762,
+   "cache_creation_input_tokens": 12572,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0053956
+  },
+  {
+   "batch_id": "16fd375e40",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4343,
+   "cache_creation_input_tokens": 15272,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.005226100000000001
+  },
+  {
+   "batch_id": "14323e9538",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5129,
+   "cache_creation_input_tokens": 14109,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.005386500000000001
+  },
+  {
+   "batch_id": "74dbc4bfda",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 614,
+   "cache_creation_input_tokens": 6264,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0015600000000000002
+  },
+  {
+   "batch_id": "c82eb96bfb",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4581,
+   "cache_creation_input_tokens": 14114,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0051135
+  },
+  {
+   "batch_id": "6d7c6f33e1",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 6193,
+   "cache_creation_input_tokens": 11233,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0053433000000000005
+  },
+  {
+   "batch_id": "64c5f53cbd",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 4838,
+   "cache_creation_input_tokens": 14425,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0053042
+  },
+  {
+   "batch_id": "010d037f1a",
+   "kind": "answer",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 5868,
+   "cache_creation_input_tokens": 17109,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0063560000000000005
+  },
+  {
+   "batch_id": "0a0cd5ec8b",
+   "kind": "trace",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 1682,
+   "cache_creation_input_tokens": 10635,
+   "cache_read_input_tokens": 108316,
+   "cost_usd": 0.0202568
+  },
+  {
+   "batch_id": "68350a4fd0",
+   "kind": "trace",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 1798,
+   "cache_creation_input_tokens": 9679,
+   "cache_read_input_tokens": 108316,
+   "cost_usd": 0.0195908
+  },
+  {
+   "batch_id": "2390390dfc",
+   "kind": "trace",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 2024,
+   "cache_creation_input_tokens": 10440,
+   "cache_read_input_tokens": 108316,
+   "cost_usd": 0.0209168
+  },
+  {
+   "batch_id": "81d3ec4050",
+   "kind": "trace",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 1729,
+   "cache_creation_input_tokens": 9679,
+   "cache_read_input_tokens": 108316,
+   "cost_usd": 0.0194183
+  },
+  {
+   "batch_id": "976d1202d7",
+   "kind": "trace",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 1747,
+   "cache_creation_input_tokens": 8008,
+   "cache_read_input_tokens": 108316,
+   "cost_usd": 0.017792299999999997
+  },
+  {
+   "batch_id": "a0d8525072",
+   "kind": "trace",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 2918,
+   "cache_creation_input_tokens": 11612,
+   "cache_read_input_tokens": 108316,
+   "cost_usd": 0.0243238
+  },
+  {
+   "batch_id": "8440c614aa",
+   "kind": "trace",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 2766,
+   "cache_creation_input_tokens": 7069,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.002797
+  },
+  {
+   "batch_id": "f985d5254e",
+   "kind": "trace",
+   "attempt": 0,
+   "input_tokens": 2,
+   "output_tokens": 2102,
+   "cache_creation_input_tokens": 9293,
+   "cache_read_input_tokens": 0,
+   "cost_usd": 0.0029097999999999997
+  }
+ ],
+ "failures": [],
+ "totals": {
+  "input_tokens": 80,
+  "output_tokens": 184882,
+  "cache_creation_input_tokens": 1164329,
+  "cache_read_input_tokens": 649896,
+  "n_calls": 40
+ }
+}

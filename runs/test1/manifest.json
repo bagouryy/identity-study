@@ -1,0 +1,354 @@
+{
+  "args": {
+    "split": "test",
+    "run_id": "test1",
+    "conditions": [
+      "C0",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "modes": [
+      "think",
+      "nothink"
+    ],
+    "runs": [
+      0,
+      1,
+      2,
+      "g"
+    ],
+    "concurrency": 64,
+    "limit": null,
+    "endpoint": "http://localhost:8001/v1"
+  },
+  "sampling": {
+    "think": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": 4096
+    },
+    "nothink": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": 1024
+    }
+  },
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+  "endpoint": "http://localhost:8001/v1",
+  "models_response": {
+    "object": "list",
+    "data": [
+      {
+        "id": "Qwen/Qwen3.6-35B-A3B",
+        "object": "model",
+        "created": 1793747907,
+        "owned_by": "vllm",
+        "root": "Qwen/Qwen3.6-35B-A3B",
+        "parent": null,
+        "max_model_len": 262144,
+        "permission": [
+          {
+            "id": "modelperm-a27dc634ccac3e30",
+            "object": "model_permission",
+            "created": 1793747907,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "git_head": null,
+  "git_tags": [],
+  "already_done": 7163,
+  "planned": 5,
+  "start": "2026-11-03T23:18:27+00:00",
+  "end": "2026-11-03T23:23:49+00:00",
+  "counts": {
+    "done": 5,
+    "errors": 0,
+    "truncated": 2,
+    "completion_tokens": 19313
+  },
+  "previous": [
+    {
+      "args": {
+        "split": "test",
+        "run_id": "test1",
+        "conditions": [
+          "C0",
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "modes": [
+          "think",
+          "nothink"
+        ],
+        "runs": [
+          0,
+          1,
+          2,
+          "g"
+        ],
+        "concurrency": 64,
+        "limit": null,
+        "endpoint": "http://localhost:8001/v1"
+      },
+      "sampling": {
+        "think": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 4096
+        },
+        "nothink": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 1024
+        }
+      },
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "endpoint": "http://localhost:8001/v1",
+      "models_response": {
+        "object": "list",
+        "data": [
+          {
+            "id": "Qwen/Qwen3.6-35B-A3B",
+            "object": "model",
+            "created": 1793715361,
+            "owned_by": "vllm",
+            "root": "Qwen/Qwen3.6-35B-A3B",
+            "parent": null,
+            "max_model_len": 262144,
+            "permission": [
+              {
+                "id": "modelperm-97b9261cdd51b9ad",
+                "object": "model_permission",
+                "created": 1793715361,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "git_head": "1616b319944b08395d44fbc27d2e1c64a6869b6d",
+      "git_tags": [
+        "prereg-gen-v1"
+      ],
+      "already_done": 0,
+      "planned": 7168,
+      "start": "2026-11-03T14:16:01+00:00",
+      "end": null,
+      "counts": null
+    },
+    {
+      "args": {
+        "split": "test",
+        "run_id": "test1",
+        "conditions": [
+          "C0",
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "modes": [
+          "think",
+          "nothink"
+        ],
+        "runs": [
+          0,
+          1,
+          2,
+          "g"
+        ],
+        "concurrency": 64,
+        "limit": null,
+        "endpoint": "http://localhost:8001/v1"
+      },
+      "sampling": {
+        "think": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 4096
+        },
+        "nothink": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 1024
+        }
+      },
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "endpoint": "http://localhost:8001/v1",
+      "models_response": {
+        "object": "list",
+        "data": [
+          {
+            "id": "Qwen/Qwen3.6-35B-A3B",
+            "object": "model",
+            "created": 1793730475,
+            "owned_by": "vllm",
+            "root": "Qwen/Qwen3.6-35B-A3B",
+            "parent": null,
+            "max_model_len": 262144,
+            "permission": [
+              {
+                "id": "modelperm-880d020f7c466395",
+                "object": "model_permission",
+                "created": 1793730475,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "git_head": "d3239abc7678af2e06387a6e9fe41bb17e100a4a",
+      "git_tags": [],
+      "already_done": 2829,
+      "planned": 4339,
+      "start": "2026-11-03T18:27:55+00:00",
+      "end": null,
+      "counts": null
+    },
+    {
+      "args": {
+        "split": "test",
+        "run_id": "test1",
+        "conditions": [
+          "C0",
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "modes": [
+          "think",
+          "nothink"
+        ],
+        "runs": [
+          0,
+          1,
+          2,
+          "g"
+        ],
+        "concurrency": 64,
+        "limit": null,
+        "endpoint": "http://localhost:8001/v1"
+      },
+      "sampling": {
+        "think": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 4096
+        },
+        "nothink": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0.0,
+          "presence_penalty": 1.5,
+          "repetition_penalty": 1.0,
+          "max_tokens": 1024
+        }
+      },
+      "model": "Qwen/Qwen3.6-35B-A3B",
+      "snapshot": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "endpoint": "http://localhost:8001/v1",
+      "models_response": {
+        "object": "list",
+        "data": [
+          {
+            "id": "Qwen/Qwen3.6-35B-A3B",
+            "object": "model",
+            "created": 1793737327,
+            "owned_by": "vllm",
+            "root": "Qwen/Qwen3.6-35B-A3B",
+            "parent": null,
+            "max_model_len": 262144,
+            "permission": [
+              {
+                "id": "modelperm-8cec6e0afa8cce14",
+                "object": "model_permission",
+                "created": 1793737327,
+                "allow_create_engine": false,
+                "allow_sampling": true,
+                "allow_logprobs": true,
+                "allow_search_indices": false,
+                "allow_view": true,
+                "allow_fine_tuning": false,
+                "organization": "*",
+                "group": null,
+                "is_blocking": false
+              }
+            ]
+          }
+        ]
+      },
+      "git_head": null,
+      "git_tags": [],
+      "already_done": 4292,
+      "planned": 2876,
+      "start": "2026-11-03T20:22:07+00:00",
+      "end": "2026-11-03T23:18:26+00:00",
+      "counts": {
+        "done": 2871,
+        "errors": 5,
+        "truncated": 23,
+        "completion_tokens": 2265405
+      }
+    }
+  ]
+}
